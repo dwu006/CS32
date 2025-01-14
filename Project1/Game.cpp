@@ -1,10 +1,12 @@
+#include <string>
+#include <iostream>
+using namespace std;
+
 #include "Game.h"
 #include "Room.h"
 #include "Player.h"
 #include "globals.h"
-#include <string>
-#include <iostream>
-using namespace std;
+
 
 int decodeDirection(char dir)
 {

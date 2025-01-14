@@ -30,7 +30,6 @@ class Room
     bool swatBeeAt(int r, int c, int dir);
     bool moveBees();
 
-
   private:
     int     m_rows;
     int     m_cols;
