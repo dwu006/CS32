@@ -1,8 +1,8 @@
-#include <iostream>
-using namespace std;
-
 #include "Player.h"
 #include "Room.h"
+
+#include <iostream>
+using namespace std;
 
 //Player Implementation
 

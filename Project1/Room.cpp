@@ -1,10 +1,11 @@
-#include <iostream>
-using namespace std;
-
 #include "Room.h"
 #include "Bee.h"
 #include "Player.h"
+#include "History.h"
 #include "globals.h"
+
+#include <iostream>
+using namespace std;
 
 // Rooom Implementation
 

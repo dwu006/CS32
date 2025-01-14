@@ -1,8 +1,7 @@
-#include <random>
-using namespace std; 
-
 #include "globals.h"   
 
+#include <random>
+using namespace std; 
 
 // Return a uniformly distributed random int from min to max, inclusive
 int randInt(int min, int max)

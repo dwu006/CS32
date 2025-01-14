@@ -1,12 +1,11 @@
-#include <string>
-#include <iostream>
-using namespace std;
-
 #include "Game.h"
 #include "Room.h"
 #include "Player.h"
 #include "globals.h"
 
+#include <string>
+#include <iostream>
+using namespace std;
 
 int decodeDirection(char dir)
 {
@@ -98,7 +97,7 @@ void Game::play()
                 break;
               case 'h':
                 m_room->history().display();
-                cout << "Press enter to continue. ";
+                cout << "Press Enter To Continue! ";
                 cin.ignore(10000, '\n');
                 m_room->display();
                 continue;
