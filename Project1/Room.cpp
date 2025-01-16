@@ -176,7 +176,10 @@ bool Room::swatBeeAt(int r, int c, int dir)
         m_nBees--;
         return true;
     }
-    m_history.record(r, c);
+    int row = r;
+    int col = c;
+    if (determineNewPosition(row, col, dir))
+        m_history.record(row, col);
     return false;
 }
 

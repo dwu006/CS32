@@ -13,17 +13,18 @@ History::History(int nRows, int nCols)
 }
 
 bool History::record(int r, int c)
-{
-    if(r > m_rows || c > m_cols || r < 0 || c < 0){return false;}
-    if(!isalpha(m_grid[r][c]))
+{   int rows = r-1;
+    int cols = c-1;
+
+    if(r > m_rows || c > m_cols || r <= 0 || c <= 0){return false;}
+    if(m_grid[rows][cols] == '.')
     {
-        m_grid[r][c] = 'A';
-    } else if(m_grid[r][c] < 'Z')
+        m_grid[rows][cols] = 'A';
+    }else if(m_grid[rows][cols] < 'Z')
     {
-        m_grid[r][c]++;
-    } else {
-        m_grid[r][c] = 'Z';
+        m_grid[rows][cols]++;
     }
+    
     return true;
 }
 

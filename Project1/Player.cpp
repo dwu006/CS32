@@ -51,12 +51,10 @@ void Player::moveOrSwat(int dir)
     m_age++;
     int r = m_row;
     int c = m_col;
-    cout << "r: " << r << " c: " << c << endl;
     if (m_room->determineNewPosition(r, c, dir))
     {
         if (m_room->numBeesAt(r, c) > 0)
         {
-            cout << "r: " << r << " c: " << c << endl;
             m_room->swatBeeAt(r, c, dir);
         }          
         else
