@@ -1,0 +1,234 @@
+Author: Daniel Wu, 1/28/2025
+
+1. Design
+
+The Sequence class is implemented using a double linked list. 
+Each node has a ItemType variable and a pointer to the next and
+previous nodes. The list is not circular. It has a dummy node that 
+acts as the 0th node. 
+
+Sequence(1)
+head -> {prev: nullptr, value: x, next: node1}
+node1 -> {prev: head, value: y, next: nullptr}
+
+Sequence()
+head -> {prev: nullptr, value: x, next: nullptr}
+
+2. Pseudocode
+
+function insert(pos, value) return int
+    check if pos is in range
+    create node1 new node
+    create node2 set to head
+    loop to set node2 to pos
+    if node2 not point to null
+        node1 points to node2 pointer
+        node2 points to prev to node1        
+    else 
+         node1 points to null
+    node2 points to node1
+    node1 value set to value
+    node1 prev points to node2
+    size++
+    return pos
+
+function insert (value) return int
+    creates temp new node 
+    sets node value to value
+    creates n2 set to head
+    create pos 
+    loops while n2 isnt null and value is smaller than n2 value
+        n2 points to next node
+        pos++
+    if n2 isnt null 
+        temp points to n2 pointer
+        n2 pointer from behind points to temp
+    else 
+        temp ppints to null
+    n2 points to temp
+    temp pointers from behind points to n2
+    size++
+    return pos
+
+function erase(pos) return int
+    check if pos in range
+    creates temp node to head
+    loop for temp node to get to pos
+    creates del node for temp next
+    if del node is not null
+        temp pointer points to del pointer
+        del pointer prev points to temp
+    else
+         head points to next one
+    delete del node
+    size --
+    return true
+
+function remove (value) return int
+    count , i to 0
+    create node set to head
+    while i is smaller than size
+        if temp next value is = value 
+            erase i 
+            count++
+    return count
+
+function get (value) const reutrn bool
+    returns false if pos not in range
+    create new node set to head 
+    loops to position temp node to pos
+    copy temp value to value
+    return true
+
+
+function set (pos, value) return bool
+    returns false if pos not in range
+    create new node set to head 
+    loops to position temp node to pos
+    changes temp value to value
+    return true
+
+function find(value) const return int
+    create a new node
+    loop to find a value in list equal to value
+        return i if finds one
+        move node to next node
+    return -1 (cant find or other error)
+
+function swap(other) void
+    if this equals other return
+    swap sizes
+    swap nodes
+
+function subsequencde(s1, s2) return int
+    check if s1 and s2 sizes are in range
+    for loop looping difference of s1 and s2 sizes
+        create boolean to false
+        loop through s2 size (since it should be smaller)
+             create 2 temp vars
+             s1 get (i+j, temp1)
+             s2 get (j, temp2)
+             if temps equals boolean to true and break
+
+        if boolean true return i 
+
+
+function zipper(s1, s2, result) void
+    set reuslt to new seuqnces
+    find min size of s1 and s2
+    loop (of min size) through alternating add s1 and s2 elements
+
+    if s1 size > s2 size
+        loop thorugh from min size to s1 size
+        temp 
+        s1 get i set to temp
+        insert to result
+    else if s1 < s2
+        loop through min size to s2 size
+        temp
+        s2 get i 
+        insert to result
+
+3. Test Cases
+
+#include "Sequence.h"
+#include <iostream>
+#include <cassert>
+
+// test all the regular functions of sequence
+void testSequence()
+{
+    Sequence s;
+    assert(s.empty());
+    assert(s.size() == 0);
+
+    assert(s.insert(0, "apple") == 0);
+    assert(s.insert(1, "banana") == 1);
+    assert(s.insert(2, "cherry") == 2);
+    assert(s.size() == 3);
+    
+    std::string x;
+    assert(s.get(1, x) && x == "banana");
+    assert(!s.get(3, x)); // Out of bounds
+    
+    assert(s.set(1, "blueberry"));
+    assert(s.get(1, x) && x == "blueberry");
+    
+    assert(s.erase(1));
+    assert(s.size() == 2);
+    assert(s.find("blueberry") == -1);
+    assert(s.find("apple") == 0);
+    
+    assert(s.remove("apple") == 1);
+    assert(s.size() == 1);
+    
+    Sequence t;
+    t.insert(0, "grape");
+    t.insert(1, "orange");
+    s.swap(t);
+    assert(s.size() == 2 && t.size() == 1);
+    assert(s.find("grape") == 0);
+    assert(t.find("cherry") == 0);
+}
+
+// test the subsequence function
+void testSubsequence()
+{
+    Sequence s1, s2;
+    s1.insert(0, "A");
+    s1.insert(1, "B");
+    s1.insert(2, "C");
+    s1.insert(3, "D");
+    s1.insert(4, "E");
+    
+    s2.insert(0, "C");
+    s2.insert(1, "D");
+    
+    assert(subsequence(s1, s2) == 2);
+    
+    Sequence s3;
+    s3.insert(0, "X");
+    s3.insert(1, "Y");
+    assert(subsequence(s1, s3) == -1);
+    
+    Sequence s4;
+    assert(subsequence(s1, s4) == -1); // Edge case: Empty subsequence
+}
+
+// test the zipper function
+void testZipper()
+{
+    Sequence s1, s2, result;
+    s1.insert(0, "A");
+    s1.insert(1, "C");
+    s1.insert(2, "E");
+    
+    s2.insert(0, "B");
+    s2.insert(1, "D");
+    s2.insert(2, "F");
+    
+    assert(zipper(s1, s2, result));
+    assert(result.size() == 6);
+    
+    std::string x;
+    assert(result.get(0, x) && x == "A");
+    assert(result.get(1, x) && x == "B");
+    assert(result.get(2, x) && x == "C");
+    assert(result.get(3, x) && x == "D");
+    assert(result.get(4, x) && x == "E");
+    assert(result.get(5, x) && x == "F");
+    
+    Sequence empty;
+    assert(zipper(empty, s2, result));
+    assert(result.size() == s2.size()); // Edge case: One empty sequence
+}
+
+int main()
+{
+    testSequence();
+    testSubsequence();
+    testZipper();
+    std::cout << "All tests passed!" << std::endl;
+    return 0;
+}
+
