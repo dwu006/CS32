@@ -1,0 +1,7 @@
+{
+    "C_Cpp.default.compilerPath": "/usr/bin/gcc-12",
+    "files.associations": {
+        "ostream": "cpp",
+        "iostream": "cpp"
+    }
+}

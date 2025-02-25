@@ -1,0 +1,41 @@
+Daniel Wu
+CS32 Winter 2025
+706382792
+
+Question 1:
+Given the algorithm, main function, and maze shown at the end of problem 1, what are the first 12 (r,c) coordinates popped off the stack by the algorithm?
+(6,4)
+(6,5)
+(7,5)
+(8,5)
+(8,6)
+(8,7)
+(8,8)
+(7,8)
+(6,6)
+(6,3)
+(5,4)
+(4,4)
+
+Question 2:
+Given the same main function and maze as are shown at the end of problem 1, what are the first 12 (r,c) coordinates popped from the queue in your queue-based algorithm?
+(6,4)
+(5,4)
+(6,3)
+(6,5)
+(4,4)
+(6,6)
+(7,5)
+(3,4)
+(4,5)
+(8,5)
+(2,4)
+(4,6)
+
+How do the two algorithms differ from each other? (Hint: how and why do they visit cells in the maze in a different order?)
+
+A stack used the latest coordinates it got, so it would continue down one path until it couldn't go any further then went back to the start. 
+The stack does it this way because of its ability to access the latest element it added. This is called depth first search.
+
+A queue used the earliest coordinates it got, so it would move forward in all of its paths from the starting spot and continue until a path reached a deadend or reached the end position.
+The queue does it this way because of its ability to access the earliest element it has added. This is called breadth first search.
