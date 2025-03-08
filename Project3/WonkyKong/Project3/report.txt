@@ -1,0 +1,20 @@
+Daniel Wu 706382792 Report.txt
+
+1.
+During each tick, the StudentWorld::move() method calls doSomething() on all the actors, including player and the goodie.
+The doSomething() function checks if the goodie hasn't been picked up yet and also if the Player is on the same square or not by
+using this function StudentWorld::isPlayerHere(). If they are on the same square we call GameWorld::increaseScore(value) function
+which increase player score by 50 (extralife), 25 (garlic). Then it calls the kill() method of the goodie setting it to already picked up. 
+Then we calls GameWorld::playSound(SOUND_GOT_GOODIE) which plays a sound to show the goodie has been collected. If goodie was extra life, 
+then we call GameWorld::incLives() and inc lives by 1 and if it was garlic we call getWorld()->addPlayerBurps(), which calls addBurps() and 
+adds 5 burps. For cleanup, it is deleted and removed from the game.
+
+2. 
+I dont know if its a computer problem or a code problem, but since I'm on linux when I compile and run my code,
+my keybinds sometimes don't work for now reason. I add debugging code and it doesnt print.
+
+
+3. 
+I checked to see if a certain square is valid for movement or not through functions of checkFloor, checkLadder
+I made the burps to delete any enemey (barrels, fireballs, and koopa)
+
