@@ -1,0 +1,120 @@
+Daniel Wu 706382792
+
+1.
+a.
+
+       50
+      /   \
+    20     60
+   /  \      \
+ 10    40     70
+   \   /      /  \
+   15 30     63  80
+      /  \      /
+    27   32    75
+
+b. 
+
+inorder: 10, 15, 20, 27, 30, 32, 40, 50, 60, 63, 70, 75, 80
+preorder: 50, 20, 10, 15, 40, 30, 27, 32, 60, 70, 63, 80, 75
+postorder: 15, 10, 27, 32, 30, 40, 20, 63, 75, 80, 70, 60, 50
+
+c.
+
+delete node 30 then node 20
+
+       50
+      /   \
+    27     60
+   /  \      \
+ 10    40     70
+   \   /      /  \
+   15 32     63  80
+                /
+               75
+
+2. 
+
+a.
+
+struct TreeNode {
+    int value;
+    TreeNode* parent;
+    TreeNode* left;
+    TreeNode* right;
+};
+
+b.
+
+function insert( root node, value)
+    create new node set to value
+    if node is null
+        set root to new node
+        return
+
+    create a parent node set to null
+    create a current node set to root
+
+    while current node isnt null
+        set parent to current
+        if value is less than current node value
+            set current to current left child
+        else if value is greater than current node value
+            set current to current right child
+        else
+            return
+
+    set new node parent to parent
+    if value is less than parent value
+        set parent left to new node
+    else
+        set parent right to new node
+
+3. 
+
+a. 
+
+       7
+     /   \
+    6     5
+   / \   /
+  2   4 0
+
+b. 
+
+heap from (a.) as an array: [7, 6, 5, 2, 4, 0]
+
+c.
+
+after h.remove(item): [6, 4, 5, 2, 0]
+
+4.
+
+a. O(C + S)
+
+b. O(log(C) + S)
+
+c. O(log(C) + log(S))
+
+d. O(log(S))
+
+e. O(1)
+
+f. O(log(C) + S)  (for course)
+
+g. O(Slog(S))
+
+h. O(Clog(S)) (for student)
+
+    
+
+
+
+
+
+
+
+
+
+        
+ 
