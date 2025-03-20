@@ -1,0 +1,15 @@
+Daniel Wu 706382792
+Project 4 report
+
+1. FlightManager::load_flight_data():
+   This function is O(F), where F is the total number of flight entries in the input file
+   
+   The function reads each line from the file, parses it into tokens, and adds a FlightSegment to the m_flights vector. 
+   Each of these operations is constant time per flight, and the function processes each flight exactly once.
+
+2. FlightManager::find_flights():
+   This function is O(F), where F is the total number of flights stored in the FlightManager.
+   
+   The function iterates through all flights in the m_flights vector and checks each one against the source airport 
+   and time window criteria. In the worst case, it examines every flight in the collection once, with constant time 
+   operations for each comparison.
