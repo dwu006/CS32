@@ -11,10 +11,10 @@
 ## Homework Scores
 | Homework  | Score |
 |----------|------|
-| Homework 1 |   |
+| Homework 1 |100|
 | Homework 2 |92|
 | Homework 3 |99|
 | Homework 4 |   |
-| Homework 5 |   |
+| Homework 5 |100|
 
 ### Please use only as a resource!
